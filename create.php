@@ -16,7 +16,20 @@ if(isset($_POST['name']))
       
       $ismale = "NO";
     }
+    $sql = "INSERT INTO user (name, ismale) 
+            VALUES ('$name','$ismale')";
+    $result = mysqli_query($connection, $sql);
 
+    if ($result)
+    {
+      $ms= "Successfully created";
+      header("Location: index.php?ms=$ms");
+      exit;
+    }else{
+      $ms= "Unknown error";
+      header("Location: index.php?ms=$ms");
+      exit;
+    }
   }
 
 }else{
