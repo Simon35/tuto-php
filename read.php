@@ -3,7 +3,7 @@
 include "db_connexion.php";
 $sql = "SELECT * FROM user ORDER BY id DESC";
 $result = mysqli_query($connection, $sql);
-//print_r($result);
+print_r($result);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,7 @@ $result = mysqli_query($connection, $sql);
   </style>
 </head>
 <body>
+<a href="index.php">Accueil</a>
   <?php if(mysqli_num_rows($result)) { ?>
   <table>
     <tr>
@@ -43,8 +44,7 @@ $result = mysqli_query($connection, $sql);
       <td><?= $users['name'] ?></td>
       <td><?= $users['ismale'] ?></td>
       <td>
-        <a href="">Edit</a>
-        <a href="">Delete</a>
+        <a href="update.php?id=<?= $users['id'] ?>">Edit</a>
       </td>
     </tr>
     <?php } ?>
