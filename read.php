@@ -1,4 +1,10 @@
+<?php
 
+include "db_connexion.php";
+$sql = "SELECT * FROM user ORDER BY id DESC";
+$result = mysqli_query($connection, $sql);
+//print_r($result);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +25,7 @@
   </style>
 </head>
 <body>
+  <?php if(mysqli_num_rows($result)) { ?>
   <table>
     <tr>
       <th>#</th>
@@ -26,12 +33,26 @@
       <th>Is Male</th>
       <th>Actions</th>
     </tr>
+    <?php 
+      $i = 0;
+      while($users = mysqli_fetch_assoc($result)) { 
+        $i++;
+    ?>
     <tr>
-      <td>1</td>
-      <td>John</td>
-      <td>Yes</td>
-      <td>view</td>
+      <td><?= $i ?></td>
+      <td><?= $users['name'] ?></td>
+      <td><?= $users['ismale'] ?></td>
+      <td>
+        <a href="">Edit</a>
+        <a href="">Delete</a>
+      </td>
     </tr>
-  </table>
+    <?php } ?>
+  </table><br />
+  <a href="index.php">Create</a>
+  <?php }else { ?>
+    <h1>Empty !</h1>
+    <a href="index.php">Create</a>
+    <?php } ?>
 </body>
 </html>
