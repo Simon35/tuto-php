@@ -1,0 +1,23 @@
+body {
+    margin: auto;
+    width: 50%;
+    border: 3px solid blueviolet;
+    padding: 10px;
+}
+
+h1 {
+  color: red;
+}
+
+table,
+tr,
+th,
+td {
+  border: 1px solid #bbb;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+th {
+  background-color: #eee;
+}
